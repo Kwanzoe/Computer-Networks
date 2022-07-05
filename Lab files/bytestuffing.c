@@ -13,7 +13,6 @@ dlen = strlen(data);
 
  printf("Data Byte Before Byte Stuffing:%s",data); 
 
-
 //Finding flags or esc characters inside the data and adding 'E'(esc char) before them
 
  for(i=0; i<dlen; i++)
@@ -50,17 +49,20 @@ for(i=0; i<slen;i++)
     printf("%c", stuffed[i]);
 }
 
+
+// getting the original data from the stuffed data
+
 printf("\nData afer destuffing: ");
 
-for(i=0; i<dlen; i++)
+for(i=0; i<slen; i++)
 {
-    if(data[i] == 'E')
+    if(stuffed[i] == 'E')
     {
-        printf("%c", data[i+1]);
+        printf("%c", stuffed[i+1]);
         i++;
     }
-    else if(data[i] != 'F'){
-        printf("%c", data[i]);
+    else if(stuffed[i] != 'F'){
+        printf("%c", stuffed[i]);
     }
 }
 
